@@ -2,7 +2,7 @@
 session_start();
 include 'connexion.php';
 
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'Administrateur') {
+if (!isset($_SESSION['user_role']) || strtolower($_SESSION['user_role']) !== 'administrateur') {
     header('Location: connecter.php');
     exit();
 }

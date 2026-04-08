@@ -21,9 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_prenoms'] = $user['prenoms'];
         $_SESSION['user_role'] = $user['role'];
 
-        if ($user['role'] === 'gestionnaire') {
+        $role = strtolower(trim($user['role']));
+        if ($role === 'gestionnaire') {
             header('Location: dashboard_gestionnaire.php');
-        } elseif ($user['role'] === 'Administrateur') {
+        } elseif ($role === 'administrateur') {
             header('Location: dashboard_administrateur.php');
         } else {
             header('Location: connecter.php?error=Rôle+inconnu.');
